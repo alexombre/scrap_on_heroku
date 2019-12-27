@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+ruby '2.6.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.7', '>= 5.0.7.2'
 # Use postgresql as the database for Active Record
@@ -31,13 +31,11 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'watir'
+gem "watir-rails"
 
 gem 'selenium-webdriver'
 
 gem 'headless'
-
-gem 'webdrivers', '~> 4.0'
 
 gem 'pry'
 # Use Capistrano for deployment
