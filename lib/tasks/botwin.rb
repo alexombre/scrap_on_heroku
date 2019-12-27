@@ -1,15 +1,4 @@
 require 'watir'
-require 'webdrivers'
-require 'pry'
-require 'selenium-webdriver'
-require 'json'
-require 'date'
-
-@proxy = {
-    http: '159.8.114.37:8123'
-}
-require 'watir'
-require 'webdrivers'
 require 'pry'
 require 'selenium-webdriver'
 require 'json'
