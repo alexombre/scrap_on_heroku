@@ -18,12 +18,3 @@ b.goto 'google.fr'
 
 binding.pry
 b.close
-b = Watir::Browser.new :firefox, headless: true, proxy: @proxy
-b.goto 'google.fr'
-
-
-
-
-
-binding.pry
-b.close
