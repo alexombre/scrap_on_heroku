@@ -31,13 +31,31 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem "watir-rails"
+gem 'pry'
+
+gem 'rspec'
+
+gem 'nokogiri'
+
+gem 'watir'
 
 gem 'selenium-webdriver'
 
 gem 'headless'
 
-gem 'pry'
+gem 'webdrivers', '~> 4.0'
+
+gem 'watir-performance'
+
+gem 'sidekiq'
+
+gem 'irb'
+
+gem 'redis'
+
+gem 'levenshtein'
+
+gem 'fuzzy_match'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
