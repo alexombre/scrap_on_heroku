@@ -4,18 +4,7 @@ function afterLoad(){
 };
 
 document.onscroll = function myScript() {
-  
-    document.querySelectorAll(".wff_soccer_event_row").forEach( 
-      function(currentValue) { 
-          if (currentValue.querySelectorAll(".wff_responsive_text").length === 2 || currentValue.querySelectorAll(".wff_responsive_text")[0].textContent === "TRM" || currentValue.querySelectorAll(".wff_responsive_text")[0].textContent === "REP") {
-              return;
-            } else {
-              console.log(currentValue.querySelectorAll(".wff_responsive_text")[1].textContent + ' - ' + currentValue.querySelectorAll(".wff_responsive_text")[2].textContent );
-            }
-              
-         
-      },
-    )
+
 };
 
 setTimeout("afterLoad()",1000);
