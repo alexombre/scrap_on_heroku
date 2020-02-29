@@ -1,6 +1,7 @@
 class Enetscrap
 
     def self.run
+        Selenium::WebDriver::Firefox::Binary.path="/usr/local/bin:/usr/bin:/bin:/app/vendor/firefox"
         sport_array = ['football','tennis','icehockey','basketball','handball','am_football','volleyball','rugby_union']
         b = Watir::Browser.new :firefox, headless: true #Browser INIT
         sport_array.each{|sport|
