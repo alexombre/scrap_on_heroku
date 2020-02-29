@@ -56,6 +56,10 @@ gem 'redis'
 gem 'levenshtein'
 
 gem 'fuzzy_match'
+
+gem "table_print"
+
+gem "whenever"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

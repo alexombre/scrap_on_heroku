@@ -1,15 +1,12 @@
-require_relative '../assets/fdjbot.rb'
+require_relative "#{Rails.root.to_s}/app/workers/lib/enetscrap.rb"
 
 namespace :scrap do
     
     
     desc "This task scrap bookmaker => FDJ!"
     
-    task :FDJ do
-        a = Time.now
-        p ParionsSportWorker.scrap_urls_bet.count 
-        c=Time.now
-        p "time running: #{c-a} sec"
+    task :FDJ => :environment do
+        Enetscrap.run
     end
     
 end

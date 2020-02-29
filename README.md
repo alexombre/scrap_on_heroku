@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+rails g model Event sport:string title:string home:string away:string date:date option:has_many

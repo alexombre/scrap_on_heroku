@@ -1,6 +1,3 @@
-require 'bundler'
-Bundler.require
-
 
 #CHECK 100 %
 
@@ -39,17 +36,17 @@ class ParionsSportWorker
                 b.wait
                 @all_data_hash = {} #Hash for save all data for each event: sport, title, home/away (team or player), datetime, bets
                 @sport = b.as(class: 'breadcrumb-item')[1].text
-            
                 @title = b.div(class: 'headband-eventLabel').text
                 @home = @title.split(" - ").first
                 @away = @title.split(" - ").last
                 @datetime = b.div(class: 'header-banner-event-date-section').text
+                event = Event.create(sport: @sport, title: @title, home: @home, away: @away)
                 @all_data_hash["sport"] = @sport
                 @all_data_hash["title"] = @title
                 @all_data_hash["home"] = @home
                 @all_data_hash["away"] = @away
                 @all_data_hash["datetime"] = @datetime
-                
+                event.save
                 ##SCRAP BET 
                 b.divs(class: 'wpsel-market-detail').each {|bet| #clik on  all DROPDOWN
                     next if !bet.button(text: 'Afficher plus de pronostics').exists?
@@ -58,11 +55,13 @@ class ParionsSportWorker
                 @bet_hash = {} #Hash for save all bets
                 @all_option_arr = b.divs(class: 'wpsel-market-detail')
                 @all_option_arr.each {|bet|
+                    opt = Option.create(event_id: event.id, label: bet.span(class: 'wpsel-titleRubric-detailMarket').text)
                     @odds_arr = []
                     bet.divs(class: 'buttonLine-item').each { |odd|
-                        @odds_arr << { odd.label(class: 'outcomeButton-label').text => odd.span(class: 'outcomeButton-data').text }
+                        Bet.create(label: odd.label(class: 'outcomeButton-label').text , value: odd.span(class: 'outcomeButton-data').text.sub(",",".").to_f , option_id: opt.id)
+                        #@odds_arr << { odd.label(class: 'outcomeButton-label').text => odd.span(class: 'outcomeButton-data').text }
                     }
-                    @bet_hash[bet.span(class: 'wpsel-titleRubric-detailMarket').text] = @odds_arr
+                    #@bet_hash[bet.span(class: 'wpsel-titleRubric-detailMarket').text] = @odds_arr
                 }
                 
                 @all_data_hash["bets"] = @bet_hash
